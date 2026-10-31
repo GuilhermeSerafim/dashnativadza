@@ -1,30 +1,23 @@
-# ClickUpClonemaster
+# Dashboard de projetos e tarefas
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Este repositório é um fork da base identificada como **ClickUpClonemaster**, com referências de origem v0/Vercel ao final.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/rafa07roy-3881s-projects/v0-click-up-clonemaster)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/vlT5MzBczpP)
+## Escopo do código
 
-## Overview
+Dashboard de projetos e tarefas com Next.js 14, React 18 e TypeScript, identificado como `clickup-clone` no `package.json`. A página `app/dashboard/page.tsx` consulta tarefas, projetos e usuários pelo cliente Supabase, calcula contagens a partir das respostas e mantém atividades recentes em localStorage. Esses números representam os dados da interface.
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+Há também `app/dashboard/actions.ts`, com validação de título/espaço/prioridade e consulta de usuário autenticado antes da inserção de tarefa. A página cliente e essa action usam conjuntos diferentes de campos (`project_id`/`assigned_to` e `space_id`/`priority`); a compatibilidade depende do schema configurado. O isolamento dos dados entre usuários depende das permissões e políticas do banco, além da autenticação.
 
-## Deployment
+## Ambiente e limites
 
-Your project is live at:
+O `package.json` contém scripts `dev`, `build`, `start`, `lint`, `db:check` e `db:setup`. Os dois últimos chamam rotinas de banco e podem produzir efeitos no ambiente configurado. Antes de reproduzir, prepare um banco de desenvolvimento e confira os clientes, schema e permissões.
 
-**[https://vercel.com/rafa07roy-3881s-projects/v0-click-up-clonemaster](https://vercel.com/rafa07roy-3881s-projects/v0-click-up-clonemaster)**
+O repositório também inclui código em `server/src`, scripts SQL e arquivos de testes de integração. A relação entre esses componentes e o fluxo Next.js requer configuração do ambiente; eles não compõem, por si só, um procedimento único de instalação.
 
-## Build your app
+## Referências de origem — ClickUpClonemaster
 
-Continue building your app on:
+- [v0.dev](https://v0.dev), plataforma indicada na documentação de origem.
+- [Projeto de origem no v0](https://v0.dev/chat/projects/vlT5MzBczpP).
+- [Painel Vercel de origem, no namespace rafa07roy](https://vercel.com/rafa07roy-3881s-projects/v0-click-up-clonemaster).
 
-**[https://v0.dev/chat/projects/vlT5MzBczpP](https://v0.dev/chat/projects/vlT5MzBczpP)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Quando configurada, a integração v0 pode sincronizar alterações com o repositório associado e o Vercel pode publicar suas novas versões. Esse fluxo depende das integrações do projeto associado; um fork precisa de configuração própria. O link Vercel acima aponta para um painel de implantação.
